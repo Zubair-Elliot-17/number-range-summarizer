@@ -7,27 +7,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
- * Produces a comma delimited list of numbers, collapsing runs of consecutive
- * integers into ranges.
- *
- * <p>Example: {@code "1,3,6,7,8,12,13,14,15,21,22,23,24,31"} summarizes to
- * {@code "1, 3, 6-8, 12-15, 21-24, 31"}.
- *
- * <p>Behaviour:
- * <ul>
- *     <li>{@link #collect(String)} accepts comma separated integers, tolerating
- *     surrounding whitespace and empty entries (e.g. {@code "1, 2,,3,"}).
- *     Negative numbers are supported. A {@code null} or blank input yields an
- *     empty collection. Any non-integer token results in an
- *     {@link IllegalArgumentException}.</li>
- *     <li>{@link #summarizeCollection(Collection)} does not assume its input is
- *     sorted or unique: numbers are de-duplicated and ordered ascending before
- *     being grouped. Any run of two or more consecutive numbers is written as
- *     {@code start-end}. A {@code null} or empty collection yields an empty
- *     string.</li>
- * </ul>
- *
- * <p>This class is stateless and therefore thread-safe.
+ * Summarizes numbers into a comma delimited list, grouping sequential runs into ranges,
+ * e.g. "1,3,6,7,8" becomes "1, 3, 6-8".
  */
 public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
 

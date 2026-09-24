@@ -21,6 +21,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/*
+ * Assumptions:
+ * - Input is comma separated integers; whitespace and empty entries are ignored.
+ * - Null or blank input gives an empty collection / empty string.
+ * - Invalid or out-of-range tokens throw IllegalArgumentException.
+ * - Input may be unsorted or contain duplicates; output is sorted and de-duplicated.
+ * - Two consecutive numbers form a range (4,5 -> "4-5").
+ * - Negative numbers are supported (-3,-2,-1 -> "-3--1").
+ * - Null elements in the collection throw NullPointerException.
+ */
 class NumberRangeSummarizerImplTest {
 
     private NumberRangeSummarizer summarizer;
